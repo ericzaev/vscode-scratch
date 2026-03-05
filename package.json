@@ -1,0 +1,101 @@
+{
+  "name": "vscode-scratch",
+  "displayName": "Scratch Files",
+  "description": "JetBrains-style scratch files for VS Code. Access global scratch files from any project via sidebar.",
+  "publisher": "eric",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.109.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onView:scratch-explorer",
+    "onCommand:scratch.createNew"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "scratch-explorer",
+          "title": "Scratch Files",
+          "icon": "$(edit)"
+        }
+      ]
+    },
+    "views": {
+      "scratch-explorer": [
+        {
+          "id": "scratch-scratches",
+          "name": "Scratches"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "scratch.createNew",
+        "title": "Create New Scratch",
+        "category": "Scratch"
+      },
+      {
+        "command": "scratch.refresh",
+        "title": "Refresh Scratches",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "scratch.openFile",
+        "title": "Open Scratch File"
+      },
+      {
+        "command": "scratch.deleteFile",
+        "title": "Delete Scratch",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "scratch.renameFile",
+        "title": "Rename Scratch",
+        "icon": "$(edit)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "scratch.createNew",
+          "when": "view == scratch-scratches",
+          "group": "navigation"
+        },
+        {
+          "command": "scratch.refresh",
+          "when": "view == scratch-scratches",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "scratch.renameFile",
+          "when": "view == scratch-scratches",
+          "group": "inline"
+        },
+        {
+          "command": "scratch.deleteFile",
+          "when": "view == scratch-scratches",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "build": "npm run compile",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.3",
+    "@types/vscode": "^1.109.0",
+    "typescript": "^5.9.3"
+  }
+}
