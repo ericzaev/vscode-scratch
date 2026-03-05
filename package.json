@@ -4,6 +4,7 @@
   "description": "JetBrains-style scratch files for VS Code. Access global scratch files from any project via sidebar.",
   "publisher": "eric",
   "version": "0.1.0",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.109.0"
   },
@@ -21,7 +22,7 @@
         {
           "id": "scratch-explorer",
           "title": "Scratch Files",
-          "icon": "$(edit)"
+          "icon": "icon.png"
         }
       ]
     },
